@@ -1,10 +1,9 @@
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home } from '../screens/Home';
 import { SignIn } from '../screens/SignIn';
 import { WelcomeHome } from '../screens/WelcomeHome';
 import { InviteFriends } from '../screens/InviteFriends';
-import { Image, Text, TouchableOpacity } from 'react-native';
 import { FinalScreen } from '../screens/FinalScreen';
 
 const Stack = createNativeStackNavigator();
