@@ -5,6 +5,7 @@ import { SignIn } from '../screens/SignIn';
 import { WelcomeHome } from '../screens/WelcomeHome';
 import { InviteFriends } from '../screens/InviteFriends';
 import { Image, Text, TouchableOpacity } from 'react-native';
+import { FinalScreen } from '../screens/FinalScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,15 @@ export const Navigation = () => {
         <Stack.Screen
           name='InviteFriends'
           component={InviteFriends}
+          options={{
+            headerTitle: '',
+            headerStyle: { backgroundColor: '#f5f5f5' },
+            headerTintColor: '#555555',
+          }}
+        />
+        <Stack.Screen
+          name='FinalScreen'
+          component={FinalScreen}
           options={{
             headerTitle: '',
             headerStyle: { backgroundColor: '#f5f5f5' },

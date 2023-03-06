@@ -1,7 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useRoute } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useState } from 'react';
-import { FinalScreen } from './FinalScreen';
 import {
   Image,
   Text,
@@ -12,65 +11,13 @@ import {
   FlatList,
 } from 'react-native';
 
-export type RootStackParamList = {
-  FinalScreen: {
-    friends: { id: number; imgSrc: any; username: string; selected: boolean }[];
-  };
-};
+export const FinalScreen = () => {
+  const { friends } = useRoute().params;
 
-const listItems = [
-  {
-    id: 0,
-    imgSrc: require('../../assets/avatar.png'),
-    username: 'Columbus',
-    selected: false,
-  },
-  {
-    id: 1,
-    imgSrc: require('../../assets/avatar.png'),
-    username: 'Test',
-    selected: false,
-  },
-  {
-    id: 2,
-    imgSrc: require('../../assets/avatar.png'),
-    username: 'Itastu',
-    selected: false,
-  },
-  {
-    id: 3,
-    imgSrc: require('../../assets/avatar.png'),
-    username: 'Alex',
-    selected: false,
-  },
-  {
-    id: 4,
-    imgSrc: require('../../assets/avatar.png'),
-    username: 'Prometheus',
-    selected: false,
-  },
-  {
-    id: 5,
-    imgSrc: require('../../assets/avatar.png'),
-    username: 'Isco',
-    selected: false,
-  },
-  {
-    id: 6,
-    imgSrc: require('../../assets/avatar.png'),
-    username: 'Text',
-    selected: false,
-  },
-];
-
-export const InviteFriends = () => {
   const [radioButtonSelected, setRadioButtonSelected] = useState(false);
-  const [checkboxList, setCheckboxList] = useState(listItems);
+  const [checkboxList, setCheckboxList] = useState(friends);
   const [friendListFiltered, setFriendListFiltered] = useState(checkboxList);
   const [search, setSearch] = useState('');
-
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <View>
@@ -150,16 +97,7 @@ export const InviteFriends = () => {
               <Text style={styles.cancel}>Cancel</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() =>
-              navigation.navigate('FinalScreen', {
-                friends: friendListFiltered.filter(
-                  item => item.selected === true
-                ),
-              })
-            }
-          >
+          <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Send invite</Text>
           </TouchableOpacity>
         </View>
