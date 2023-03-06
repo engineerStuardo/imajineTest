@@ -1,3 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {
   Image,
   SafeAreaView,
@@ -6,7 +8,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+
+export type RootStackParamList = {
+  InviteFriends: undefined;
+};
+
 export const WelcomeHome = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.menuContainer}>
@@ -39,7 +49,7 @@ export const WelcomeHome = () => {
         </View>
         <TouchableOpacity
           style={styles.button}
-          // onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('InviteFriends')}
         >
           <Text style={styles.buttonText}>Invite friends</Text>
         </TouchableOpacity>
