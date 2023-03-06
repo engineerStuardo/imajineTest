@@ -1,3 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {
   Image,
   ImageBackground,
@@ -7,7 +9,14 @@ import {
   View,
 } from 'react-native';
 
+export type RootStackParamList = {
+  SignIn: undefined;
+};
+
 export const Home = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <ImageBackground
       style={styles.backgroundImage}
@@ -19,7 +28,10 @@ export const Home = () => {
         source={require('../../assets/socialNetTitle.png')}
       />
       <Text style={styles.subtitle}>Welcome</Text>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('SignIn')}
+      >
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
     </ImageBackground>
